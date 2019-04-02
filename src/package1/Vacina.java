@@ -1,6 +1,6 @@
 package package1;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Vacina {
 	private TipoVacina descricao;

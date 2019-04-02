@@ -2,14 +2,17 @@ package package1;
 import java.util.Date;
 
 public abstract class Animal {
+	 
 	 private Double peso;
 	 private String raca;
 	 private String genero;
 	 private Date nascimento;
 	 private Long registro;
 	 private TipoAnimal tipo;
-	 private Preco preco;
 	 private CarteiraVacina carteira;
+	 
+	 private final double PRECO_KG_BOVINO = 20.0;
+	 private final double PRECO_KG_SUINO = 15.0;
 	 
 	 public Animal(Double peso, String raca, String genero, Date nascimento, Long registro, TipoAnimal tipo) {
 		 this.peso = peso;
@@ -23,15 +26,35 @@ public abstract class Animal {
 	 
 	private void inicializarAnimal() {
 		if (this.tipo == TipoAnimal.BOVINO) {
-			this.preco = new PrecoBovino();
 			this.carteira = new CarteiraBovina();
 		}
 		else if (this.tipo == TipoAnimal.SUINO) {
-			this.preco = new PrecoSuino();
 			this.carteira = new CarteiraSuina();
 		}
 	}
+	
+	public void vacinar(TipoVacina tipoVacina, String data) {
+		this.carteira.vacinar(tipoVacina, data);
+	}
 
+	public void vacinar(TipoVacina tipoVacina, Date data) {
+		
+	}
+	
+	public double obterPreco() {
+		double preco = 0;
+		if (this.tipo == TipoAnimal.BOVINO) {
+			preco = this.PRECO_KG_BOVINO * this.peso;
+		}
+		else if (this.tipo == TipoAnimal.SUINO) {
+			preco = this.PRECO_KG_SUINO * this.peso;
+		}
+		return preco;
+	}
+	
+	public double getPesoEmArroba() {
+		return peso / 15;
+	}
 	public double getPeso() {
 		return peso;
 	}
@@ -68,6 +91,4 @@ public abstract class Animal {
 	public void setTipo(TipoAnimal tipo) {
 		this.tipo = tipo;
 	} 
-   
- 
 }
