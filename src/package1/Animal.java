@@ -11,9 +11,6 @@ public abstract class Animal {
 	 private TipoAnimal tipo;
 	 private CarteiraVacina carteira;
 	 
-	 private final double PRECO_KG_BOVINO = 20.0;
-	 private final double PRECO_KG_SUINO = 15.0;
-	 
 	 public Animal(Double peso, String raca, String genero, Date nascimento, Long registro, TipoAnimal tipo) {
 		 this.peso = peso;
 		 this.raca = raca;
@@ -24,6 +21,7 @@ public abstract class Animal {
 		 this.inicializarAnimal();
 	}
 	 
+
 	private void inicializarAnimal() {
 		if (this.tipo == TipoAnimal.BOVINO) {
 			this.carteira = new CarteiraBovina();
@@ -41,19 +39,8 @@ public abstract class Animal {
 		
 	}
 	
-	public double obterPreco() {
-		double preco = 0;
-		if (this.tipo == TipoAnimal.BOVINO) {
-			preco = this.PRECO_KG_BOVINO * this.peso;
-		}
-		else if (this.tipo == TipoAnimal.SUINO) {
-			preco = this.PRECO_KG_SUINO * this.peso;
-		}
-		return preco;
-	}
-	
 	public double getPesoEmArroba() {
-		return peso / 15;
+		return peso / 30;
 	}
 	public double getPeso() {
 		return peso;
@@ -76,6 +63,7 @@ public abstract class Animal {
 	public Date getNascimento() {
 		return nascimento;
 	}
+		
 	public void setNascimento(Date nascimento) {
 		this.nascimento = nascimento;
 	}
@@ -90,5 +78,6 @@ public abstract class Animal {
 	}
 	public void setTipo(TipoAnimal tipo) {
 		this.tipo = tipo;
-	} 
+	}
+	
 }
