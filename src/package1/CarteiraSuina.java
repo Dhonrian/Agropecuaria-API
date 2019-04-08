@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarteiraSuina extends CarteiraVacina {
-	
+/**
+ * Classe com as vacinas especificas para a espécie Suína
+ */
 	public CarteiraSuina() {
 		super.vacinas = new ArrayList<Vacina>();
 		super.vacinas.add(new Vacina(TipoVacina.COLIBACILOSE, null, null));

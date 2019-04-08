@@ -1,7 +1,9 @@
 package package1;
 
 public enum TipoVacina {
-	
+	/**
+	 * Classe criada para armazenar os tipos de vacina que existem dentre as espécies de animais
+	 */
 	FEBRE_AFTOSA,
 	CLOSTRIDIOSES,
 	BOTULISMO,
