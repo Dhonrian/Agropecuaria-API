@@ -1,22 +1,35 @@
-package package1;
+package cadastro_animal;
 import java.util.Date;
 
+import carteira_vacina.CarteiraBovina;
+import carteira_vacina.CarteiraSuina;
+import carteira_vacina.CarteiraVacina;
+import carteira_vacina.TipoVacina;
+
+/**
+ * Classe para o cadastro dos animais
+ */
+
 public abstract class Animal {
-	 
+
 	 private Double peso;
-	 private String raca;
 	 private String genero;
 	 private Date nascimento;
 	 private Long registro;
 	 private TipoAnimal tipo;
 	 private CarteiraVacina carteira;
 	 
-	 private final double PRECO_KG_BOVINO = 20.0;
-	 private final double PRECO_KG_SUINO = 15.0;
+/**
+ * Método construtor de animais.
+ * @param peso Peso comercial do animal que pode ser registrado em Kilogramas ou Arrobas
+ * @param genero Gênero do animal, podendo ser feminino ou masculino
+ * @param nascimento Data de nascimento do animal
+ * @param registro Número utilizado na identificação de cada um dos animais individualmente
+ * @param tipo Registro da espécie do animal
+ */
 	 
 	 public Animal(Double peso, String raca, String genero, Date nascimento, Long registro, TipoAnimal tipo) {
 		 this.peso = peso;
-		 this.raca = raca;
 		 this.genero = genero;
 		 this.nascimento = nascimento;
 		 this.registro = registro;
@@ -24,7 +37,11 @@ public abstract class Animal {
 		 this.inicializarAnimal();
 	}
 	 
-	private void inicializarAnimal() {
+ /**
+ * Método que define a espécie do animal registrado
+ */
+	 
+	 private void inicializarAnimal() {
 		if (this.tipo == TipoAnimal.BOVINO) {
 			this.carteira = new CarteiraBovina();
 		}
@@ -32,40 +49,24 @@ public abstract class Animal {
 			this.carteira = new CarteiraSuina();
 		}
 	}
-	
-	public void vacinar(TipoVacina tipoVacina, String data) {
+	 
+/**
+ * Método de controle da vacinação de cada animal
+ * @param tipoVacina Lista de possíveis vacinas do animal
+ * @param data Data da próxima vacina a ser tomada
+ */
+
+	 public void vacinar(TipoVacina tipoVacina, String data) {
 		this.carteira.vacinar(tipoVacina, data);
 	}
-
-	public void vacinar(TipoVacina tipoVacina, Date data) {
-		
-	}
-	
-	public double obterPreco() {
-		double preco = 0;
-		if (this.tipo == TipoAnimal.BOVINO) {
-			preco = this.PRECO_KG_BOVINO * this.peso;
-		}
-		else if (this.tipo == TipoAnimal.SUINO) {
-			preco = this.PRECO_KG_SUINO * this.peso;
-		}
-		return preco;
-	}
-	
 	public double getPesoEmArroba() {
-		return peso / 15;
+		return peso / 30;
 	}
 	public double getPeso() {
 		return peso;
 	}
 	public void setPeso(Double peso) {
 		this.peso = peso;
-	}
-	public String getRaca() {
-		return raca;
-	}
-	public void setRaca(String raca) {
-		this.raca = raca;
 	}
 	public String getGenero() {
 		return genero;
@@ -90,5 +91,5 @@ public abstract class Animal {
 	}
 	public void setTipo(TipoAnimal tipo) {
 		this.tipo = tipo;
-	} 
+	}
 }

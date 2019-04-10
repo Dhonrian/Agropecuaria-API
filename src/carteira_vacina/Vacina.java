@@ -1,4 +1,4 @@
-package package1;
+package carteira_vacina;
 
 import java.util.Date;
 
