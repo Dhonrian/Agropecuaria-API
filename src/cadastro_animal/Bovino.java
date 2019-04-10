@@ -1,4 +1,4 @@
-package package1;
+package cadastro_animal;
 
 import java.util.Date;
 

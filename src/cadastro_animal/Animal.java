@@ -1,5 +1,10 @@
-package package1;
+package cadastro_animal;
 import java.util.Date;
+
+import carteira_vacina.CarteiraBovina;
+import carteira_vacina.CarteiraSuina;
+import carteira_vacina.CarteiraVacina;
+import carteira_vacina.TipoVacina;
 
 /**
  * Classe para o cadastro dos animais
@@ -13,6 +18,7 @@ public abstract class Animal {
 	 private Long registro;
 	 private TipoAnimal tipo;
 	 private CarteiraVacina carteira;
+	 
 /**
  * Método construtor de animais.
  * @param peso Peso comercial do animal que pode ser registrado em Kilogramas ou Arrobas
@@ -21,6 +27,7 @@ public abstract class Animal {
  * @param registro Número utilizado na identificação de cada um dos animais individualmente
  * @param tipo Registro da espécie do animal
  */
+	 
 	 public Animal(Double peso, String raca, String genero, Date nascimento, Long registro, TipoAnimal tipo) {
 		 this.peso = peso;
 		 this.genero = genero;
@@ -28,11 +35,12 @@ public abstract class Animal {
 		 this.registro = registro;
 		 this.tipo = tipo; 
 		 this.inicializarAnimal();
-		
 	}
-	 /**
-	  * Método que define a espécie do animal registrado
-	  */
+	 
+ /**
+ * Método que define a espécie do animal registrado
+ */
+	 
 	 private void inicializarAnimal() {
 		if (this.tipo == TipoAnimal.BOVINO) {
 			this.carteira = new CarteiraBovina();
@@ -41,15 +49,16 @@ public abstract class Animal {
 			this.carteira = new CarteiraSuina();
 		}
 	}
-	/**
-	 * Método de controle da vacinação de cada animal
-	 * @param tipoVacina Lista de possíveis vacinas do animal
-	 * @param data Data da próxima vacina a ser tomada
-	 */
-	public void vacinar(TipoVacina tipoVacina, String data) {
+	 
+/**
+ * Método de controle da vacinação de cada animal
+ * @param tipoVacina Lista de possíveis vacinas do animal
+ * @param data Data da próxima vacina a ser tomada
+ */
+
+	 public void vacinar(TipoVacina tipoVacina, String data) {
 		this.carteira.vacinar(tipoVacina, data);
 	}
-	
 	public double getPesoEmArroba() {
 		return peso / 30;
 	}

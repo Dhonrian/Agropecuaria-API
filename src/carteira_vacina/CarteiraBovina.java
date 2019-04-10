@@ -1,12 +1,14 @@
-package package1;
+package carteira_vacina;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarteiraBovina extends CarteiraVacina{
+	
 /**
  * Classe com as vacinas especificas para a espécie Bovina
  */
+	
 	public CarteiraBovina() {
 		super.vacinas = new ArrayList<Vacina>();
 		super.vacinas.add(new Vacina(TipoVacina.FEBRE_AFTOSA, null, null));
